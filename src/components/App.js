@@ -12,7 +12,10 @@ const LoginButton = () => {
   return (
     <>
       <input type='text' ref={inputRef} id='username' />
-      <button id="login-button" type='button' onClick={() => dispatch(onSignIn(inputRef.current.value))}>Login</button>
+      <button id="login-button" type='button'
+        onClick={() => inputRef.current.value &&
+          dispatch(onSignIn(inputRef.current.value))}
+      >Login</button>
     </>
   )
 }
