@@ -22,7 +22,7 @@ const initalState = {
   loggedIn: false,
   username: ''
 };
-const auth = (state = initalState, action) => {
+const authReducer = (state = initalState, action) => {
   switch (action.type) {
     case SIGN_IN: return {
       loggedIn: true,
@@ -37,7 +37,7 @@ const auth = (state = initalState, action) => {
 }
 
 const reducers = combineReducers({
-  auth
+  auth: authReducer
 })
 
 export default reducers;
