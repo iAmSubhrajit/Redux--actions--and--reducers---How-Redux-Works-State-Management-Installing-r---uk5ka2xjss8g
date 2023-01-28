@@ -16,8 +16,28 @@ const reducer = (state = [],action = {}) => {
 export default reducer;
 */
 import { combineReducers } from "redux";
+import { SIGN_IN, SIGN_OUT } from "./actions";
 
 const initalState = {
-    loggedIn : false,
-    username : ''
+  loggedIn: false,
+  username: ''
 };
+const auth = (state = initalState, action) => {
+  switch (action.type) {
+    case SIGN_IN: return {
+      loggedIn: true,
+      username: action.payload
+    };
+    case SIGN_OUT: return {
+      loggedIn: false,
+      username: ''
+    };
+    default: return state
+  }
+}
+
+const reducers = combineReducers({
+  auth
+})
+
+export default reducers;
