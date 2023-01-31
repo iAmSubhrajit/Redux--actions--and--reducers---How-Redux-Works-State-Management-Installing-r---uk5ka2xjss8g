@@ -8,13 +8,21 @@ import '../styles/App.css';
 const LoginButton = () => {
   const dispatch = useDispatch();
   const inputRef = useRef(null)
+  const handleLogin = () => {
+    if (inputRef.current.value == '') {
+      inputRef.current.focus()
+    }
+    else {
+      dispatch(onSignIn(inputRef.current.value))
+
+    }
+  }
 
   return (
     <>
       <input type='text' ref={inputRef} id='username' />
       <button id="login-button" type='button'
-        onClick={() => inputRef.current.value &&
-          dispatch(onSignIn(inputRef.current.value))}
+        onClick={handleLogin}
       >Login</button>
     </>
   )
